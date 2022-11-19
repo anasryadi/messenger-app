@@ -54,7 +54,7 @@ function ChatInput() {
   return (
     <form
       onSubmit={addMessage}
-      className="fixed bottom-0 z-50 w-full flex px-10 py-5 space-x-2 borded-t borded-gray-100"
+      className="fixed bottom-0 z-50 w-full flex px-10 py-5 space-x-2 borded-t bg-white borded-gray-100"
     >
       <input
         type="text"

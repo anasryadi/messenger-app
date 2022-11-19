@@ -3,6 +3,7 @@
 import useSWR from "swr";
 import { Message } from "../typings";
 import fetcher from "../utils/fetchMessages";
+import MessageComponent from "./MessageComponent";
 
 function MessageList() {
   const {
@@ -12,11 +13,9 @@ function MessageList() {
   } = useSWR<Message[]>("/api/getMessages", fetcher);
 
   return (
-    <div>
+    <div className="space-y-5 px-5 pt-8 pb-32 max-w-2xl xl:max-w-4xl mx-auto">
       {messages?.map((message) => (
-        <div key={message.id}>
-          <p>{message.message}</p>
-        </div>
+        <MessageComponent key={message.id} message={message} />
       ))}
     </div>
   );
