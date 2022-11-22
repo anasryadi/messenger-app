@@ -18,7 +18,7 @@ function ChatInput({session}: Props) {
   const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!input) return;
+    if (!input || !session) return;
 
     const messageToSend = input;
 
@@ -30,10 +30,10 @@ function ChatInput({session}: Props) {
       id,
       message: messageToSend,
       created_at: Date.now(),
-      username: "Anas Ryadi",
+      username: session?.user?.name!,
       profilePic:
-        "https://scontent-lax3-1.xx.fbcdn.net/v/t1.6435-9/65008123_10218421972876557_1260119902585356288_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=DDr50ZR-bkIAX9GUy_c&_nc_ht=scontent-lax3-1.xx&oh=00_AfAb2bh7L96Z8O5IPbiBXRchBxifDyq95_oQwbaxKx6PeA&oe=639CF859",
-      email: "anasryadi@gmail.com",
+        session?.user?.image!,
+      email: session?.user?.email!,
     };
 
     const uploadMessageToUpstash = async () => {
